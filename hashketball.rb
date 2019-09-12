@@ -260,8 +260,22 @@ def player_with_longest_name
   longest_name
 end
 
-def long_name_steals_a_ton?
-  
+def longest_name_steals_a_ton?
+  steals = 0
+  name = ""
+  game_hash.each do |location, team|
+    team[:players].each do |stats|
+      if stats[:steals] > steals
+        steals = stats[:steals]
+        name = stats[:player_name]
+      end
+    end
+  end
+    if name == "Bismack Biyombo"
+      return true
+    else
+      return false
+  end
 end
 
 
